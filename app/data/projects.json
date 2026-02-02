@@ -1,0 +1,120 @@
+[
+    {
+        "id": 1,
+        "title": "Revido.cz",
+        "description": "Vývoj nového webu pro značku Revido (dříve Encall) v rámci jejího rebrandingu. Web vytvořen ve spolupráci s Effective LAB.",
+        "technologies": [
+            "React",
+            "Material UI",
+            "TypeScript",
+            "Strapi"
+        ],
+        "image": "/images/revido-mock.png",
+        "liveUrl": "https://revido.cz"
+    },
+    {
+        "id": 2,
+        "title": "Docu-X",
+        "description": "Tvorba nového webu pro Docux – platformu pro digitalizaci a správu dokumentů. Web vytvořen ve spolupráci s Effective LAB.",
+        "technologies": [
+            "Next.js",
+            "Tailwind CSS",
+            "TypeScript",
+            "Strapi"
+        ],
+        "image": "/images/docux-mock.png",
+        "liveUrl": "https://docux.cz"
+    },
+    {
+        "id": 3,
+        "title": "SanStarling",
+        "description": "Web pro malířku Sandru Carvajal Starling. Vytvořeno ve spolupráci s Effective LAB.",
+        "technologies": [
+            "Next.js",
+            "Tailwind CSS",
+            "TypeScript",
+            "Strapi"
+        ],
+        "image": "/images/sanstarling-mock.png",
+        "liveUrl": "https://sanstarling.com"
+    },
+    {
+        "id": 4,
+        "title": "IT-Centrum",
+        "description": "vývoj nového webu obchodní centrum. Vytvořeno ve spolupráci s Effective LAB.",
+        "technologies": [
+            "Next.js",
+            "Tailwind CSS",
+            "TypeScript",
+            "Strapi"
+        ],
+        "image": "/images/it-centrum-mock.png",
+        "liveUrl": "https://it-centrum.cz"
+    },
+    {
+        "id": 5,
+        "title": "Rezidence Muzeum",
+        "description": "Tvorba moderního webu pro pražský hotel Rezidence Muzeum. Vytvořeno ve spolupráci s Effective LAB.",
+        "technologies": [
+            "Next.js",
+            "Tailwind CSS",
+            "TypeScript",
+            "Strapi"
+        ],
+        "image": "/images/rezidence-mock.png",
+        "liveUrl": "https://rezidencemuzeum.cz"
+    },
+    {
+        "id": 6,
+        "title": "AsistRo.cz",
+        "description": "Asistro.cz je osobní web koučky a mentorky zaměřené na vztahy, osobní rozvoj a zdravý životní styl. Web vytvořen ve spolupráci s Effective LAB.",
+        "technologies": [
+            "Next.js",
+            "Tailwind CSS",
+            "TypeScript",
+            "Strapi"
+        ],
+        "image": "/images/asistro-mock.png",
+        "liveUrl": "https://asistro.cz"
+    },
+    {
+        "id": 7,
+        "title": "Trinkets.cz",
+        "description": "E-shop s ručně háčkovanými plyšáky, zaměřený na jednoduchý design a přehledné nakupování.",
+        "technologies": [
+            "PHP",
+            "Symfony",
+            "Twig",
+            "SCSS",
+            "Stripe"
+        ],
+        "image": "/images/trinkets-mock.png",
+        "liveUrl": "https://trinkets.cz"
+    },
+    {
+        "id": 8,
+        "title": "Liatinové-Kachle.sk",
+        "description": "Prezentační web zaměřený na litinové kachlové kamna a topení. Stránka poskytuje informace o produktech a službách, s důrazem na kvalitu a tradiční řemeslné zpracování.",
+        "technologies": [
+            "HTML",
+            "PHP",
+            "SCSS",
+            "JavaScript"
+        ],
+        "image": "/images/kachle-mock.png",
+        "liveUrl": "https://liatinove-kachle.sk"
+    },
+    {
+        "id": 9,
+        "title": "Travertin.at",
+        "description": "Prezentační web pro prodej přírodního travertinu. Minimalistický design, důraz na rychlost, přehlednost a snadnou navigaci pro zákazníky.",
+        "technologies": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "PHP"
+        ],
+        "image": "/images/travertin-mock.png",
+        "liveUrl": "https://travertin.at"
+    }
+]
