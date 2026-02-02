@@ -70,7 +70,7 @@ export default function Portfolio() {
               className="group bg-foreground/5 dark:bg-foreground/10 border border-foreground/10 rounded-2xl overflow-hidden cursor-pointer hover:-translate-y-2.5 transition-transform duration-200 ease-out"
             >
               <div className="bg-linear-to-br from-foreground/5 to-foreground/1 relative overflow-hidden">
-                <Image src={project.image} alt={project.title} width={3125} height={2084} />
+                <Image src={project.image} alt={project.title} width={460} height={307} />
                 <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300" />
               </div>
               <div className="p-6">
