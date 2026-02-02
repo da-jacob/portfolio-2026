@@ -52,10 +52,17 @@ export default function Navigation() {
   };
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -81,23 +88,21 @@ export default function Navigation() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-4 left-4 right-4 z-50 transition-all duration-300 ${scrolled
-          ? "bg-white/50 dark:bg-black/50 backdrop-blur-xl shadow-lg rounded-2xl"
+          ? "bg-white/50 dark:bg-black/50 backdrop-blur-md md:backdrop-blur-xl shadow-lg rounded-2xl"
           : "bg-transparent"
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex items-center justify-between h-16">
-            <motion.a
+            <a
               href="#hero"
               className="text-xl md:text-2xl font-bold text-foreground hover:scale-105 active:scale-95 transition-transform duration-200 relative group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               <span className="bg-linear-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
                 Jakub Lipár
               </span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300" />
-            </motion.a>
+            </a>
             <div className="hidden md:flex items-center gap-1">
               {navItems.map((item, index) => (
                 <motion.a
@@ -149,66 +154,20 @@ export default function Navigation() {
               </motion.button>
             </div>
             <div className="md:hidden flex items-center gap-2">
-              <motion.button
+              <button
                 onClick={toggleDarkMode}
-                className="p-2 rounded-lg hover:bg-foreground/5 transition-colors"
+                className="p-2 rounded-lg hover:bg-foreground/5 transition-colors active:scale-95"
                 aria-label="Toggle dark mode"
-                whileTap={{ scale: 0.95 }}
               >
-                <AnimatePresence mode="wait">
-                  {darkMode ? (
-                    <motion.div
-                      key="sun"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Sun className="w-5 h-5" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="moon"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Moon className="w-5 h-5" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-              <motion.button
-                className="p-2 rounded-lg hover:bg-foreground/5 transition-colors relative z-50"
+                {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+              <button
+                className="p-2 rounded-lg hover:bg-foreground/5 transition-colors relative z-50 active:scale-95"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Menu"
-                whileTap={{ scale: 0.95 }}
               >
-                <AnimatePresence mode="wait">
-                  {mobileMenuOpen ? (
-                    <motion.div
-                      key="close"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <X className="w-6 h-6" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="menu"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Menu className="w-6 h-6" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
         </div>
@@ -223,23 +182,18 @@ export default function Navigation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/50 dark:bg-black/80 backdrop-blur-sm z-40 md:hidden"
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/50 dark:bg-black/80 z-40 md:hidden"
               onClick={closeMenu}
             />
             {/* Menu Panel */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               className="fixed inset-0 z-40 md:hidden flex items-center justify-center bg-white dark:bg-black"
             >
-              {/* Background Gradient */}
-              <div className="absolute inset-0 -z-10">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-400/8 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-purple-400/8 rounded-full blur-3xl" />
-              </div>
 
               <div className="w-full px-6 py-12">
                 <motion.div
@@ -254,59 +208,39 @@ export default function Navigation() {
 
                 <nav className="space-y-2">
                   {navItems.map((item, index) => (
-                    <motion.a
+                    <a
                       key={item.name}
                       href={item.href}
                       onClick={closeMenu}
-                      className="block text-center py-4 px-6 text-lg font-medium text-foreground/70 hover:text-foreground rounded-xl hover:bg-foreground/5 transition-all"
-                      initial={{ opacity: 0, }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.2 + index * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      className="block text-center py-4 px-6 text-lg font-medium text-foreground/70 hover:text-foreground rounded-xl hover:bg-foreground/5 transition-all active:scale-95"
+                      style={{
+                        animation: `fadeIn 0.3s ease-out ${0.1 + index * 0.05}s both`,
+                      }}
                     >
                       {item.name}
-                    </motion.a>
+                    </a>
                   ))}
-                  <motion.button
+                  <button
                     onClick={() => {
                       toggleDarkMode();
                     }}
-                    className="w-full mt-4 py-4 px-6 text-lg font-medium text-foreground/70 hover:text-foreground rounded-xl hover:bg-foreground/5 transition-all flex items-center justify-center gap-2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 + navItems.length * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="w-full mt-4 py-4 px-6 text-lg font-medium text-foreground/70 hover:text-foreground rounded-xl hover:bg-foreground/5 transition-all flex items-center justify-center gap-2 active:scale-95"
+                    style={{
+                      animation: `fadeIn 0.3s ease-out ${0.1 + navItems.length * 0.05}s both`,
+                    }}
                   >
-                    <AnimatePresence mode="wait">
-                      {darkMode ? (
-                        <motion.div
-                          key="sun"
-                          initial={{ rotate: -90, opacity: 0 }}
-                          animate={{ rotate: 0, opacity: 1 }}
-                          exit={{ rotate: 90, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="flex items-center gap-2"
-                        >
-                          <Sun className="w-5 h-5" />
-                          <span>Světlý režim</span>
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="moon"
-                          initial={{ rotate: 90, opacity: 0 }}
-                          animate={{ rotate: 0, opacity: 1 }}
-                          exit={{ rotate: -90, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="flex items-center gap-2"
-                        >
-                          <Moon className="w-5 h-5" />
-                          <span>Tmavý režim</span>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.button>
+                    {darkMode ? (
+                      <div className="flex items-center gap-2">
+                        <Sun className="w-5 h-5" />
+                        <span>Světlý režim</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <Moon className="w-5 h-5" />
+                        <span>Tmavý režim</span>
+                      </div>
+                    )}
+                  </button>
                 </nav>
               </div>
             </motion.div>

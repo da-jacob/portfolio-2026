@@ -32,9 +32,9 @@ export default function Hero() {
     >
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
-        {/* Gradient Orbs */}
+        {/* Gradient Orbs - Reduced blur on mobile for performance */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-400/8 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 dark:bg-indigo-400/8 rounded-full blur-3xl md:blur-3xl blur-xl will-change-transform"
           animate={{
             x: [0, 100, 0],
             y: [0, 50, 0],
@@ -45,9 +45,10 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
+          style={{ transform: "translateZ(0)" }}
         />
         <motion.div
-          className="absolute top-1/2 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-purple-400/8 rounded-full blur-3xl"
+          className="absolute top-1/2 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-purple-400/8 rounded-full blur-3xl md:blur-3xl blur-xl will-change-transform"
           animate={{
             x: [0, -80, 0],
             y: [0, -60, 0],
@@ -58,9 +59,10 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
+          style={{ transform: "translateZ(0)" }}
         />
         <motion.div
-          className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-pink-500/10 dark:bg-pink-400/8 rounded-full blur-3xl"
+          className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-pink-500/10 dark:bg-pink-400/8 rounded-full blur-3xl md:blur-3xl blur-xl will-change-transform"
           animate={{
             x: [0, 60, 0],
             y: [0, -80, 0],
@@ -71,6 +73,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
+          style={{ transform: "translateZ(0)" }}
         />
         {/* Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
