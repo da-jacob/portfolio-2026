@@ -15,7 +15,7 @@ export default function Home() {
       <Portfolio />
       <Contact />
       <footer className="py-8 text-center text-sm text-foreground/50 border-t border-indigo-500/10 dark:border-indigo-400/20">
-        <p>© {new Date().getFullYear()} Jakub. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Jakub Lipár</p>
       </footer>
     </main>
   );

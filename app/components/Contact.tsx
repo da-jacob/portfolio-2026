@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Send, Mail, Linkedin, Github, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, Mail, Linkedin, Github, CheckCircle, AlertCircle, Phone } from "lucide-react";
 
 type FormData = {
   name: string;
@@ -120,6 +120,13 @@ export default function Contact() {
             </div>
             <div className="space-y-4">
               <a
+                href="tel:+420739254222"
+                className="flex items-center gap-3 text-foreground/70 hover:text-foreground hover:translate-x-1 transition-all duration-200"
+              >
+                <Phone className="w-5 h-5" />
+                +420 739 254 222
+              </a>
+              <a
                 href="mailto:info@jakublipar.cz"
                 className="flex items-center gap-3 text-foreground/70 hover:text-foreground hover:translate-x-1 transition-all duration-200"
               >
@@ -144,6 +151,11 @@ export default function Contact() {
                   <Github className="w-5 h-5" />
                 </a>
               </div>
+              <p
+                className="flex items-center gap-3 text-foreground/70 mt-8"
+              >
+                <b>IČO:</b> 14086344
+              </p>
             </div>
           </motion.div>
 
